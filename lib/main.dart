@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lawyer_app_google_solutions/navBar.dart';
-import 'package:lawyer_app_google_solutions/screen/clientHomePage.dart';
-import 'package:lawyer_app_google_solutions/screen/clientProfile.dart';
+import 'package:lawyer_app_google_solutions/view/clientAuthentication.dart';
+import 'package:lawyer_app_google_solutions/view/clientHomePage.dart';
+import 'package:lawyer_app_google_solutions/view/clientProfile.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lawyer_app_google_solutions/screen/lawyerProfile.dart';
+import 'package:lawyer_app_google_solutions/view/lawyerHomePage.dart';
+import 'package:lawyer_app_google_solutions/view/lawyerProfile.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
@@ -69,7 +71,7 @@ class MainScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LawyerProfile()),
+                        MaterialPageRoute(builder: (context) => const LowyerProfile()),
                       );
                       // Navigator.of(context).push(MaterialPageRoute(
                       //     builder: (ctx) => LawyerProfile()));
@@ -95,6 +97,26 @@ class MainScreen extends StatelessWidget {
                       //     builder: (ctx) => ClientProfile()));
                     },
                     child: Text("Client HomePage")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  UserLoginPage()),
+                      );
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (ctx) => ClientProfile()));
+                    },
+                    child: Text("Authentication Page")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  LawyerHomeScreen()),
+                      );
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (ctx) => ClientProfile()));
+                    },
+                    child: Text("Lawyer Home page")),
               ],
             ),
           ),

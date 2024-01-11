@@ -1,12 +1,12 @@
-import 'dart:html';
-
+//
+//
 class Lawyer {
   Lawyer({
     required this.name,
     required this.age,
     required this.location,
     required this.phone,
-    required this.image,
+   // this.image,
     required this.qualification,
     required this.barCouncilId,
     required this.totalCases,
@@ -19,11 +19,29 @@ class Lawyer {
   final String name;
   final int age;
   final String location;
-  final BigInt phone;
-  final File image;
+  final String phone;
+  // final File image;
   final String qualification;
   final String barCouncilId;
   final int totalCases;
   final int totalSuccess;
   final String domain;
 }
+
+
+// class LawyerEntity {
+//   final String profilePhoto;
+//   final String name;
+//   final String category;
+//   final String location;
+//   final int totalCasesHandled;
+//
+//   LawyerEntity({
+//     required this.profilePhoto,
+//     required this.name,
+//     required this.category,
+//     required this.location,
+//     required this.totalCasesHandled,
+//   });
+// }
+

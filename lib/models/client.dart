@@ -16,7 +16,7 @@ class Client {
   final String name;
   final int age;
   final String location;
-  final BigInt phone;
+  final String phone;
   final File image;
   final String profession;
 }
