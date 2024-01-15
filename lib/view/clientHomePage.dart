@@ -100,6 +100,8 @@ class _ClientHomePageState extends State<ClientHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       drawer: ClientDrawer(),
       appBar: AppBar(
@@ -122,9 +124,10 @@ class _ClientHomePageState extends State<ClientHomePage> {
                 onSubmitted: (value) {},
               ),
             ),
+            SizedBox(height: 5,),
             LocationWidget(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(18.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
@@ -136,9 +139,10 @@ class _ClientHomePageState extends State<ClientHomePage> {
                       blurRadius: 5,
                       offset: Offset(0, 3),
                     ),
+
                   ],
                 ),
-                height: 300,
+                height:screenHeight*0.52,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListView.builder(

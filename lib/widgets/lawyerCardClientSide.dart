@@ -13,13 +13,13 @@ class LawyerCardClientSide extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(builder: (context)=>LawyerProfileScreen(lawyer: lawyer,)));
       },
       child: Card(
-        elevation: 8, // Add some elevation for a lifted effect
+        elevation: 2, // Add some elevation for a lifted effect
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15), // Soften edges with rounded corners
         ),
-        margin: EdgeInsets.all(10), // Add spacing around the card
+        margin: EdgeInsets.all(6), // Add spacing around the card
         child: Padding(
-          padding: EdgeInsets.all(15), // Create inner padding for content
+          padding: EdgeInsets.all(10), // Create inner padding for content
           child: Row(
             children: [
               CircleAvatar(

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+// import 'package:lawyer_app_google_solutions/firebase_options.dart';
 import 'package:lawyer_app_google_solutions/navBar.dart';
 import 'package:lawyer_app_google_solutions/view/clientAuthentication.dart';
 import 'package:lawyer_app_google_solutions/view/clientHomePage.dart';
@@ -6,6 +9,11 @@ import 'package:lawyer_app_google_solutions/view/clientProfile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lawyer_app_google_solutions/view/lawyerHomePage.dart';
 import 'package:lawyer_app_google_solutions/view/lawyerProfile.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+import 'controls/auth.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
@@ -29,7 +37,11 @@ final theme = ThemeData().copyWith(
     ),
   ),
 );
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
       MyApp());
 }
@@ -49,7 +61,9 @@ class MyApp extends StatelessWidget {
           color: Colors.lightBlue,
         ),
       ),
-      home: MainScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (BuildContext context, AsyncSnapshot<User?> snapshot) { return MainScreen(); },),
     );
   }
 }
@@ -117,6 +131,16 @@ class MainScreen extends StatelessWidget {
                       //     builder: (ctx) => ClientProfile()));
                     },
                     child: Text("Lawyer Home page")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const  AuthScreen()),
+                      );
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (ctx) => ClientProfile()));
+                    },
+                    child: Text("Auth Screen")),
               ],
             ),
           ),

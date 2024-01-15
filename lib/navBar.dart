@@ -50,6 +50,7 @@ class _NavBarState extends State<NavBar> {
               label: "profile"),
         ],
       ),
+
     );
   }
 }

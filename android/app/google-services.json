@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "981446491450",
-    "project_id": "lawyer-app-326e4",
-    "storage_bucket": "lawyer-app-326e4.appspot.com"
+    "project_number": "532103208443",
+    "project_id": "flutterlawyerapp",
+    "storage_bucket": "flutterlawyerapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:981446491450:android:c59c61e0df9613faf2e403",
+        "mobilesdk_app_id": "1:532103208443:android:e201dbdbc0f87f029cbf5e",
         "android_client_info": {
           "package_name": "com.example.lawyer_app_google_solutions"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBk81ReHGhzzBy7F5vLZbkoUxh_M-Zn5qM"
+          "current_key": "AIzaSyA1A4g2sWgFfY5q5zgTlMe3QOVRzGgGfJM"
         }
       ],
       "services": {

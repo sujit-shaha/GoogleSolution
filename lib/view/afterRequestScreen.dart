@@ -43,15 +43,19 @@ class _AfterRequestScreenState extends State<AfterRequestScreen> {
               Center(
                 child: Container(
                   width: 400,
-                  height: 70,
+                  height: 100,
                   child: Card(
                     elevation: 30,
                     child: Center(
-                      child: TextFormField(
-                        controller: messageController,
-                        maxLines: null, // Set maxLines to null for multiline input
-                        decoration: InputDecoration(
-                          hintText: "Write message here",
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          controller: messageController,
+                          maxLines: null, // Set maxLines to null for multiline input
+                          decoration: InputDecoration(
+                            hintText: "Write message here",
+
+                          ),
                         ),
                       ),
                     ),
