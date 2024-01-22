@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:lawyer_app_google_solutions/view/clientHomePage.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -33,6 +34,8 @@ class _AuthScreenState extends State<AuthScreen> {
         final userCredentials = await _firebase.signInWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
         print(userCredentials);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (ctx) => ClientHomePage()));
       } else {
         final userCredentials = await _firebase.createUserWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
@@ -101,7 +104,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           TextFormField(
                             decoration:
-                            const InputDecoration(labelText: 'Password'),
+                                const InputDecoration(labelText: 'Password'),
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.trim().length < 6) {

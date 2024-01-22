@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lawyer_app_google_solutions/view/clientHomePage.dart';
 
 class UserLoginPage extends StatefulWidget {
   @override
@@ -14,9 +15,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController professionController = TextEditingController();
 
-  File? image; // Placeholder for user image, you'll need to implement image handling.
+  File?
+      image; // Placeholder for user image, you'll need to implement image handling.
 
-  bool isSigningUp = false; // Track whether the user is signing up or logging in.
+  bool isSigningUp =
+      false; // Track whether the user is signing up or logging in.
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +66,20 @@ class _UserLoginPageState extends State<UserLoginPage> {
               onPressed: () {
                 // Perform login or signup logic here
                 String name = nameController.text;
-                int age = isSigningUp ? int.tryParse(ageController.text) ?? 0 : 0;
+                int age =
+                    isSigningUp ? int.tryParse(ageController.text) ?? 0 : 0;
                 String location = locationController.text;
                 String phone = phoneController.text;
-                String profession = isSigningUp ? professionController.text : '';
+                String profession =
+                    isSigningUp ? professionController.text : '';
 
                 // You can use these values for your login or signup logic.
                 if (isSigningUp) {
-                  print('Signup - Name: $name, Age: $age, Location: $location, Phone: $phone, Profession: $profession');
+                  print(
+                      'Signup - Name: $name, Age: $age, Location: $location, Phone: $phone, Profession: $profession');
                 } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => ClientHomePage()));
                   print('Login - Location: $location, Phone: $phone');
                 }
               },
@@ -84,7 +92,9 @@ class _UserLoginPageState extends State<UserLoginPage> {
                   isSigningUp = !isSigningUp;
                 });
               },
-              child: Text(isSigningUp ? 'Already have an account? Login' : 'Don\'t have an account? Signup'),
+              child: Text(isSigningUp
+                  ? 'Already have an account? Login'
+                  : 'Don\'t have an account? Signup'),
             ),
           ],
         ),

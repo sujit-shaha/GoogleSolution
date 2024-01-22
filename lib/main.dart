@@ -1,19 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:lawyer_app_google_solutions/firebase_options.dart';
 import 'package:lawyer_app_google_solutions/navBar.dart';
+import 'package:lawyer_app_google_solutions/theme.dart';
 import 'package:lawyer_app_google_solutions/view/clientAuthentication.dart';
-import 'package:lawyer_app_google_solutions/view/clientHomePage.dart';
 import 'package:lawyer_app_google_solutions/view/clientProfile.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lawyer_app_google_solutions/view/lawyerHomePage.dart';
 import 'package:lawyer_app_google_solutions/view/lawyerProfile.dart';
-import 'firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 import 'controls/auth.dart';
+import 'firebase_options.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
@@ -39,11 +38,12 @@ final theme = ThemeData().copyWith(
 );
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    await  [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-      MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -54,16 +54,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.lightBlue,
+        primaryColor: lightColorScheme.primary,
         hintColor: Colors.blueAccent,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
-          color: Colors.lightBlue,
+          color: lightColorScheme.tertiary,
         ),
       ),
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (BuildContext context, AsyncSnapshot<User?> snapshot) { return MainScreen(); },),
+        builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+          return MainScreen();
+        },
+      ),
     );
   }
 }
@@ -75,75 +78,77 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: Text("Main screen"),
-          ),
-          body: Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LowyerProfile()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => LawyerProfile()));
-                    },
-                    child: Text("Lawyer Profile")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const ClientProfile()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => ClientProfile()));
-                    },
-                    child: Text("Client Profile")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const NavBar()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => ClientProfile()));
-                    },
-                    child: Text("Client HomePage")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  UserLoginPage()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => ClientProfile()));
-                    },
-                    child: Text("Authentication Page")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  LawyerHomeScreen()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => ClientProfile()));
-                    },
-                    child: Text("Lawyer Home page")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const  AuthScreen()),
-                      );
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (ctx) => ClientProfile()));
-                    },
-                    child: Text("Auth Screen")),
-              ],
-            ),
-          ),
-        ));
+      appBar: AppBar(
+        title: Text("Main screen"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LowyerProfile()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => LawyerProfile()));
+                },
+                child: Text("Lawyer Profile")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ClientProfile()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => ClientProfile()));
+                },
+                child: Text("Client Profile")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NavBar()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => ClientProfile()));
+                },
+                child: Text("Client HomePage")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserLoginPage()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => ClientProfile()));
+                },
+                child: Text("Authentication Page")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LawyerHomeScreen()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => ClientProfile()));
+                },
+                child: Text("Lawyer Home page")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AuthScreen()),
+                  );
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (ctx) => ClientProfile()));
+                },
+                child: Text("Auth Screen")),
+          ],
+        ),
+      ),
+    ));
   }
 }

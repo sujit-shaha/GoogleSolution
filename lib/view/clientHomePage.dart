@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lawyer_app_google_solutions/main.dart';
 import 'package:lawyer_app_google_solutions/models/lawyer.dart';
-import 'package:lawyer_app_google_solutions/view/clientMessagePage.dart';
-import 'package:lawyer_app_google_solutions/view/clientProfile.dart';
+import 'package:lawyer_app_google_solutions/theme.dart';
 import 'package:lawyer_app_google_solutions/widgets/ClientLocationWidget.dart';
 import 'package:lawyer_app_google_solutions/widgets/clientDrawer.dart';
 import 'package:lawyer_app_google_solutions/widgets/lawyerCardClientSide.dart';
-import '';
 
 class ClientHomePage extends StatefulWidget {
   const ClientHomePage({super.key});
@@ -117,32 +114,45 @@ class _ClientHomePageState extends State<ClientHomePage> {
               height: 7,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: SearchBar(
-                leading: Icon(Icons.search),
+                // textStyle: MaterialStateProperty.all(
+                //   TextStyle(
+                //     color: Colors.grey,
+                //   )
+                // ),
+                // backgroundColor: MaterialStateProperty.all(
+                //   Colors.grey
+                // ),
+                leading: const Icon(Icons.search),
                 hintText: "Search",
+                hintStyle: MaterialStateProperty.all(const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                )),
+
+                constraints: BoxConstraints(minHeight: 35),
                 onSubmitted: (value) {},
               ),
             ),
-            SizedBox(height: 5,),
-            LocationWidget(),
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 10,
+              ),
+              child: LocationWidget(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 1,
+              ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: lightColorScheme.inversePrimary,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-
-                  ],
                 ),
-                height:screenHeight*0.52,
+                height: screenHeight * 0.5,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListView.builder(

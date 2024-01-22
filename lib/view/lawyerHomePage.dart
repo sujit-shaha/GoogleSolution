@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lawyer_app_google_solutions/theme.dart';
 import 'package:lawyer_app_google_solutions/view/acceptedCases.dart';
 import 'package:lawyer_app_google_solutions/view/lawyerProfile.dart';
 
@@ -27,6 +28,8 @@ class LawyerHomeScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: FloatingActionButton(
+                  foregroundColor: lightColorScheme.tertiary,
+                  backgroundColor: lightColorScheme.secondary,
                   onPressed: () {},
                   child: Icon(Icons.message_outlined),
                 ),
@@ -41,13 +44,18 @@ class LawyerHomeScreen extends StatelessWidget {
   Widget _buildProfileCard(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (ctx)=>LowyerProfile(),),);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (ctx) => LowyerProfile(),
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[300],
+          color: lightColorScheme.inversePrimary,
         ),
         child: Row(
           children: [
@@ -65,12 +73,12 @@ class LawyerHomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Name',
+                    ' Name',
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   SizedBox(height: 5),
                   Text(
-                    'About',
+                    ' About',
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(height: 5),
@@ -141,9 +149,9 @@ class LawyerHomeScreen extends StatelessWidget {
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.orange[400],
+        color: lightColorScheme.inversePrimary,
       ),
-      height: 450,
+      height: 400,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

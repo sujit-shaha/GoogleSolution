@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lawyer_app_google_solutions/theme.dart';
 import 'package:lawyer_app_google_solutions/view/afterRequestScreen.dart';
 
 import '../models/lawyer.dart';
@@ -14,7 +15,7 @@ class LawyerProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(lawyer.name),
       ),
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: lightColorScheme.background,
       body: SingleChildScrollView(
         padding: EdgeInsets.only(top: 20, left: 8, right: 8),
         child: Column(
@@ -22,7 +23,7 @@ class LawyerProfileScreen extends StatelessWidget {
           children: [
             // Profile card with image and details
             Card(
-              elevation: 10,
+              color: lightColorScheme.inversePrimary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -43,7 +44,10 @@ class LawyerProfileScreen extends StatelessWidget {
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [Colors.transparent, Colors.black.withOpacity(0.4)],
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withOpacity(0.4)
+                              ],
                             ),
                           ),
                           child: const Center(
@@ -57,22 +61,23 @@ class LawyerProfileScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Text(
                       lawyer.name,
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       'About',
-                      style: const TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.black),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       'Qualification: ${lawyer.qualification}',
-                      style: const TextStyle(color: Colors.grey),
+                      style: TextStyle(color: lightColorScheme.inverseSurface),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       'Bar Council ID: ${lawyer.barCouncilId}',
-                      style: const TextStyle(color: Colors.grey),
+                      style: TextStyle(color: lightColorScheme.inverseSurface),
                     ),
                     const SizedBox(height: 15),
                     Row(
@@ -112,10 +117,14 @@ class LawyerProfileScreen extends StatelessWidget {
               height: 80,
             ),
 
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (ctx)=>AfterRequestScreen()));
-
-            }, child: Text("Send Request"))
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (ctx) => AfterRequestScreen()));
+                },
+                child: Text("Send Request"))
             // ... (add more Card widgets as needed)
           ],
         ),

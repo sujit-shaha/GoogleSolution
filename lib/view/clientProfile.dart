@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lawyer_app_google_solutions/theme.dart';
 
 class ClientProfile extends StatefulWidget {
   const ClientProfile({Key? key});
@@ -21,7 +22,7 @@ class _ClientProfileState extends State<ClientProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6F7FF),
+      backgroundColor: lightColorScheme.background,
       appBar: AppBar(
         title: const Text("Your Profile"),
       ),
@@ -29,17 +30,17 @@ class _ClientProfileState extends State<ClientProfile> {
         padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Card(
-            elevation: 5,
+            color: lightColorScheme.inversePrimary,
             margin: EdgeInsets.all(8),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: CircleAvatar(
-                      radius: 80,
-                      backgroundColor: Colors.transparent,
+                      radius: 50,
+                      backgroundColor: lightColorScheme.background,
                       child: Icon(
                         Icons.person,
                         size: 80,
@@ -85,21 +86,21 @@ class _ClientProfileState extends State<ClientProfile> {
         children: [
           Text(
             label,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(),
+            style: TextStyle(fontSize: 15),
           ),
           SizedBox(width: 15),
           _isEditing
               ? Expanded(
-            child: TextFormField(
-              controller: controller,
-            ),
-          )
+                  child: TextFormField(
+                    controller: controller,
+                  ),
+                )
               : Expanded(
-            child: Text(
-              controller.text,
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
-            ),
-          ),
+                  child: Text(
+                    controller.text,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
+                  ),
+                ),
         ],
       ),
     );
